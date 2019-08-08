@@ -1,0 +1,50 @@
+{
+  "name": "gulp-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "bulid": "webpack",
+    "gulp": "gulp default"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.5.0",
+    "@babel/core": "^7.5.4",
+    "@babel/preset-env": "^7.5.4",
+    "autoprefixer": "^9.6.1",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.0.6",
+    "cssnano": "^4.1.10",
+    "gulp": "^4.0.2",
+    "gulp-babel": "^8.0.0",
+    "gulp-clean": "^0.4.0",
+    "gulp-htmlmin": "^5.0.1",
+    "gulp-imagemin": "^6.0.0",
+    "gulp-notify": "^3.2.0",
+    "gulp-postcss": "^8.0.0",
+    "gulp-rename": "^1.4.0",
+    "gulp-sass": "^4.0.2",
+    "gulp-uglify": "^3.0.2",
+    "gulp-util": "^3.0.8",
+    "gulp-webpack": "^1.5.0",
+    "run-sequence": "^2.2.1",
+    "webpack": "^4.35.3",
+    "webpack-cli": "^3.3.5",
+    "webpack-glob-entry": "^2.1.1"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.4.4"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "Android >= 4.0",
+    "iOS 7.1",
+    "Chrome > 31",
+    "ff > 31",
+    "not ie <= 8"
+  ]
+}

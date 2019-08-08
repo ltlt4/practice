@@ -1,0 +1,15 @@
+{
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "modules": false,
+        "targets": {},
+        "useBuiltIns": "usage",
+        "debug": false,
+        "loose": false,
+        "corejs": 2
+      }
+    ]
+  ],
+}
