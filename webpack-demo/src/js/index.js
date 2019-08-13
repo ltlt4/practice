@@ -1,5 +1,6 @@
-import url from './two';
-import { Bill } from './theer'
-let Hum = Bill;
-let xiaoming = new Hum('xiaoming', 0);
-console.log(url);
+import jQuery from 'jquery';
+var $ = jQuery;
+var but =$('#but')
+but.click(function(){
+    console.log(1);
+});

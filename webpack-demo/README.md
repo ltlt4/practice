@@ -34,3 +34,6 @@ webpack-demo
 1. `resolve`（解析） 该选项创建 import 或 require 的别名，来确保模块引入变得更简单。主要说一下extensions，`resolve.extensions`可以让引入文件时不用拓展名。
 比如 ``import File from '../path/to/file'``。
 webpack会根据extensions的配置去自动寻找依赖文件，extensions默认为.js，则上面的代码其实为``import File from '../path/to/file.js'``。
+
+#常用插件
+1. `webpack-merge` https://github.com/survivejs/webpack-merge 该插件可以合并webpack配置，

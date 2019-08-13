@@ -1,7 +1,7 @@
 const path = require('path'); // path模块是node.js的核心模块，主要用来操作文件路径
 const webpack = require('webpack');  // 引入已经安装的webpack模块
 const HtmlWebpackPlugin = require('html-webpack-plugin');  //引入 htmlwebpackplugin 插件 作用生成html文件
-const ExtractTextWebpackPlugin = require('extract-text-webpack-plugin'); //引入extract-text-webpack-plugin 拆分css，将css从js中抽离,webpack4已弃用，
+//const ExtractTextWebpackPlugin = require('extract-text-webpack-plugin'); webpack4已弃用，
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin'); // 每次打包前，先清空打包后生成的dist文件包
 
@@ -139,7 +139,7 @@ module.exports = {
         inline: true,
         stats: 'errors-only',
         hot: true, // 启动热更新
-        open: true // 启用webpack-dev-server时，自动打开浏览器
+        open: true, // 启用webpack-dev-server时，自动打开浏览器
     },
     devtool: 'inline-source-map' //是一个工具，主要是查看编译后的文件如果报错，控制台提示错误来自于编译前的哪一个文件。方便找错
 
