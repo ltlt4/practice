@@ -47,6 +47,15 @@ module.exports =merge(common,{
     devServer: { // 配置本地开发服务器
         contentBase: path.resolve(__dirname, 'dist'),//webpack-dev-ser运行时的文件根目录 (将 dist 目录下的文件，作为搭建的开发服务器可访问的文件)
         open: true, // 启用webpack-dev-server时，自动打开浏览器
+        historyApiFallback: false,
+        host: 'localhost',  // 可以通过localhost访问
+        port:4020,
+        overlay: {
+            errors: true // 出现错误之后会在页面中出现遮罩层提示
+        },
+        inline: true,
+        stats: 'errors-only', //只在发生错误时输出
+        hot: true, // 启动热更新
     },
     devtool: 'inline-source-map' //是一个工具，主要是查看编译后的文件如果报错，控制台提示错误来自于编译前的哪一个文件。方便找错
 })

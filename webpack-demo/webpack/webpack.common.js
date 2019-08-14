@@ -17,6 +17,13 @@ module.exports = {
                 exclude: path.resolve(__dirname, 'node_modules'), //exclude  不包含node_modules中js文件
                 include: path.resolve(__dirname, 'src'), // include  包含src中的js文件
             },
+            {
+                test: /\.css$/,
+                use: [
+                    'style-loader', 'css-loader'
+                ]
+
+            }
         ]
     },
 }
