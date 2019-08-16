@@ -5,6 +5,7 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');//压缩js插件
 const {CleanWebpackPlugin} = require('clean-webpack-plugin'); // 每次打包前，先清空打包后生成的dist文件包
 const HtmlWebpackPlugin = require('html-webpack-plugin');  //引入 htmlwebpackplugin 插件 作用生成html文件
 const webpack = require('webpack');  // 引入已经安装的webpack模块
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 module.exports =merge(common,{
     mode: 'development',  //开发模式
     output: {
@@ -42,6 +43,11 @@ module.exports =merge(common,{
             filename: 'index.html',
             template: 'src/html/index.html'
         }),
+        new MiniCssExtractPlugin({
+            // 类似 webpackOptions.output里面的配置 可以忽略
+            filename: '[name].css',
+            chunkFilename: '[id].css',
+          }),
         new webpack.HotModuleReplacementPlugin() // HotModuleReplacementPlugin为webpack内置插件调用使用webpack.[plugin-name]使用这些插件
     ],
     devServer: { // 配置本地开发服务器

@@ -20,7 +20,19 @@ module.exports = {
             {
                 test: /\.css$/,
                 use: [
-                    'style-loader', 'css-loader'
+                    {
+                        loader: MiniCssExtractPlugin.loader,
+                        options: {
+                            // you can specify a publicPath here
+                            // by default it uses publicPath in webpackOptions.output
+                            publicPath: '../',
+                            hmr: process.env.NODE_ENV === 'development',
+                        },
+                    },
+                    { loader: 'css-loader', options: { importLoaders: 1 } }, //使用cssloader处理css
+                    {
+                        loader: 'postcss-loader', //postcss
+                    },
                 ]
 
             }
