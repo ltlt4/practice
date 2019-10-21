@@ -1,12 +1,12 @@
 {
   "compilerOptions": {
     "outDir": "./dist/",
-    "noImplicitAny": true,
+    "noImplicitAny": false, //在表达式和声明上有隐含的 any类型时报错。
     "module": "es6",
-    "target": "es5",
+    "target": "es2015", //	指定ECMAScript目标版本
     "jsx": "react",
     "allowJs": true,
     "sourceMap": true,
-    "noUnusedLocals": true
+    "noUnusedLocals": true //若有未使用的局部变量则抛错
   }
 }

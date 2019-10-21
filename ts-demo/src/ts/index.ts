@@ -1,5 +1,5 @@
-import {} from 'echarts';
 import * as echarts from 'echarts';
+
 const ec = echarts as any;
 let lineChart = ec.init(document.getElementById('lineChart'));
 let lineChartOption = {
@@ -80,3 +80,14 @@ let lineChartOption = {
   ]
 };
 lineChart.setOption(lineChartOption);
+function timeout(ms) {
+  return new Promise(resolve => {
+    setTimeout(resolve, ms);
+  });
+}
+async function asyncPrint(value: string, ms: number) {
+  await timeout(ms);
+  console.log(value);
+}
+
+asyncPrint('hello world', 50);
