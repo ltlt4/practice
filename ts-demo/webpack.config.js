@@ -1,6 +1,7 @@
 const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack');
 
 module.exports = {
   mode: 'development',
@@ -27,10 +28,13 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: 'Production',
       template: 'index.html'
-    })
+    }),
+    new webpack.HotModuleReplacementPlugin() //HRM模块
   ],
   devtool: 'inline-source-map',
   devServer: {
-    contentBase: './dist'
+    contentBase: './dist',
+    hot: true, //热更新
+    port: 8000
   }
 };
