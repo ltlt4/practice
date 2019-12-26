@@ -1,93 +1,43 @@
-import * as echarts from 'echarts';
-
+import * as echarts from "echarts";
 const ec = echarts as any;
-let lineChart = ec.init(document.getElementById('lineChart'));
-let lineChartOption = {
-  tooltip: {
-    trigger: 'axis'
-  },
-  toolbox: {
-    show: false
-  },
-  legend: {
-    padding: 0
-  },
-  xAxis: [
-    {
-      type: 'category',
-      boundaryGap: false,
-      data: [
-        '1月',
-        '2月',
-        '3月',
-        '4月',
-        '5月',
-        '6月',
-        '7月',
-        '8月',
-        '9月',
-        '10月',
-        '11月',
-        '12月'
-      ]
-    }
-  ],
-  yAxis: [
-    {
-      type: 'value'
-    }
-  ],
-  series: [
-    {
-      name: '新签合同额',
-      type: 'line',
-      smooth: true,
-      itemStyle: {
-        normal: {
-          lineStyle: {
-            color: '#c8c8c8'
-          }
-        }
-      },
-      data: [10, 2, 5, 4, 6, 3, 7, 2, 2, 3, 6, 7]
-    },
-    {
-      name: '营业收入',
-      type: 'line',
-      smooth: true,
-      itemStyle: {
-        normal: {
-          lineStyle: {
-            color: '#1ab394'
-          }
-        }
-      },
-      data: [3, 2, 4, 7, 0, 3, 1, 3, 4, 1, 2, 3]
-    },
-    {
-      name: '归属母公司净利润',
-      type: 'line',
-      smooth: true,
-      itemStyle: {
-        normal: {
-          lineStyle: {
-            color: '#ff713a'
-          }
-        }
-      },
-      data: [10, 2, 6, 3, 2, 9, 10, 3, 4, 8, 4, 3]
-    }
-  ]
-};
-lineChart.setOption(lineChartOption);
-function timeout(ms) {
-  return new Promise(resolve => {
-    setTimeout(resolve, ms);
-  });
-}
-async function asyncPrint(value: string, ms: number) {
-  await timeout(ms);
-  console.log(value);
+let myChart = ec.init(document.getElementById("lineChart"));
+myChart.showLoading();
+interface LabelledValue {
+  label: string;
+  color?: string;
+  width?: number;
 }
 
-asyncPrint('hello world', 50);
+let key: number = 20;
+let list = [];
+for (let i = 0; i < key; i++) {
+  let w: LabelledValue = {
+    label: "1" + i,
+    width: i * 2
+  };
+  list.push(w);
+}
+
+interface Foo {
+  type: "foo";
+}
+
+interface Bar {
+  type: "bar";
+}
+
+type All = Foo | Bar;
+function handleValue(val: All) {
+  switch (val.type) {
+    case "foo":
+      // 这里 val 被收窄为 Foo
+      break;
+    case "bar":
+      // val 在这里是 Bar
+      break;
+    default:
+      // val 在这里是 never
+      const exhaustiveCheck: never = val;
+      break;
+  }
+}
