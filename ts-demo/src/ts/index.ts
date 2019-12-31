@@ -1,7 +1,6 @@
 import * as echarts from "echarts";
 const ec = echarts as any;
 let myChart = ec.init(document.getElementById("lineChart"));
-myChart.showLoading();
 interface LabelledValue {
   label: string;
   color?: string;
