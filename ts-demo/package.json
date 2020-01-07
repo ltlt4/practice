@@ -29,5 +29,9 @@
   "dependencies": {
     "echarts": "^4.2.1",
     "jquery": "^3.4.1"
+  },
+  "prettier": {
+    "semi": true,
+    "singleQuote": true
   }
 }
