@@ -149,3 +149,93 @@ const promise = new Promise(resolve => {
 
 
 
+# **async/await 的一些理解**
+
+ES7提出的asyc函数，可以说是javascript异步操作的终极解决方案
+
+### **1. 语法**
+**async作为一个关键字放在函数之前，async函数返回一个Promise对象**
+``` javascript 
+ async function f(){
+    //.......
+ }
+```
+`async`函数内部return返回的值。会成为`then`方法回调函数的参数。
+
+```javascript 
+async function f(){
+ return 'hello world';
+ }
+f().then(res=>console.log(res)); //hello world
+```
+如果`async`函数内部抛出异常，则会导致返回的`Promise`对象状态变为`rejected`。抛出的错误会被`catch`方法接收到。
+
+```javascript
+async function f(){
+ throw new Error('error');
+ }
+f().then(res=>{console.log(res});
+.catch(e=>console.log(e));
+```
+
+async返回的Promise对象，必须等到内部所有的await命令的Promise对象执行完，才会发生状态改变。
+**也就是说，只有`async`函数内部的异步操作都执行玩，才会执行`then`方法的回调**
+```javascript 
+      const key = function(time) {
+        return new Promise(resolve => {
+          setTimeout(() => {
+            resolve();
+          }, time);
+        });
+      };
+
+      async function f() {
+        await key(2000);
+        await key(1000);
+        await key(3000);
+        return "hello";
+      }
+      f().then(res => {
+        console.log(res); //6秒后输出hello
+      });
+```
+
+一般情况下`await`后面跟着的是一个`Promise`对象,如果不是，则会被`Promise.resolve()`转换为一个`Promise`
+如：
+```javascript 
+async function f(){
+   return await 1;
+}
+f().then(res=>{
+   console.log(res) //1
+});
+```
+如果返回的是rejected状态,则会被`catch`方法捕获。
+### **2. 错误处理**
+由于`async`的特性,代码中有时会出现一些意外情况
+比如：
+```javascript 
+let a;
+async function f() {
+    await Promise.reject("error");
+    a = await 1; // 这段 await 并没有执行
+}
+f().catch(e => console.log(a)); //undefined
+```
+可以使用 `try/catch`
+```javascript 
+let a;
+async function f(){
+    try{
+       await Promise.reject('err')
+    }catch(error){
+       console.log(error);
+    }
+    a=await 1;
+    return a
+}
+
+f()
+  .then(res=>console.log(a)) //1
+  .catch(e=>console.log(e)); //err
+```
