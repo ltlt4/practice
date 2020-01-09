@@ -146,3 +146,6 @@ const promise = new Promise(resolve => {
 ```
 
 5. `Promise.reject` 与 `Promise.resolve` 同理，区别在于返回的 `promise` 对象状态为 `rejected`
+
+
+
