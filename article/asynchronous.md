@@ -179,25 +179,26 @@ f().then(res=>{console.log(res});
 ```
 
 async返回的Promise对象，必须等到内部所有的await命令的Promise对象执行完，才会发生状态改变。
+
 **也就是说，只有`async`函数内部的异步操作都执行玩，才会执行`then`方法的回调**
 ```javascript 
-      const key = function(time) {
-        return new Promise(resolve => {
-          setTimeout(() => {
-            resolve();
-          }, time);
-        });
-      };
+const key = function(time) {
+return new Promise(resolve => {
+   setTimeout(() => {
+	  resolve();
+     }, time);
+   });
+};
 
-      async function f() {
-        await key(2000);
-        await key(1000);
-        await key(3000);
-        return "hello";
-      }
-      f().then(res => {
-        console.log(res); //6秒后输出hello
-      });
+async function f() {
+    await key(2000);
+    await key(1000);
+    await key(3000);
+    return "hello";
+}
+f().then(res => {
+    console.log(res); //6秒后输出hello
+});
 ```
 
 一般情况下`await`后面跟着的是一个`Promise`对象,如果不是，则会被`Promise.resolve()`转换为一个`Promise`
