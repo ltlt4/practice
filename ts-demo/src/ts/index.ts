@@ -1,4 +1,3 @@
-'use strict';
 // import * as echarts from 'echarts';
 // const ec = echarts as any;
 // let myChart = ec.init(document.getElementById('lineChart'));
@@ -48,3 +47,7 @@ function* helloWorldGenerator() {
   return 'ending';
 }
 let hw = helloWorldGenerator();
+
+function symbol(name?: any): symbol {
+  return Symbol(name);
+}
