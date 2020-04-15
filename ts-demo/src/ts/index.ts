@@ -1,53 +1,23 @@
 // import * as echarts from 'echarts';
 // const ec = echarts as any;
 // let myChart = ec.init(document.getElementById('lineChart'));
-interface LabelledValue {
-  label: string;
-  color?: string;
-  width?: number;
-}
-
-let key: number = 20;
-let list = [];
-for (let i = 0; i < key; i++) {
-  let w: LabelledValue = {
-    label: '1' + i,
-    width: i * 2
-  };
-  list.push(w);
-}
-
-interface Foo {
-  type: 'foo';
-}
-
-interface Bar {
-  type: 'bar';
-}
-
-type All = Foo | Bar;
-function handleValue(val: All) {
-  switch (val.type) {
-    case 'foo':
-      // 这里 val 被收窄为 Foo
-      break;
-    case 'bar':
-      // val 在这里是 Bar
-      break;
-    default:
-      // val 在这里是 never
-      const exhaustiveCheck: never = val;
-      break;
+const student = {
+  name: 'jsPool',
+  age: 20,
+  scores: {
+    math: 95,
+    chinese: 98,
+    english: 93
   }
+};
+function showScore(student) {
+  const {
+    name,
+    scores: { math = 0, chinese = 0, english = 0 }
+  } = student;
+  console.log('学生名:' + name);
+  console.log('数学成绩:' + math);
+  console.log('语文成绩:' + chinese);
+  console.log('英语成绩:' + english);
 }
-
-function* helloWorldGenerator() {
-  yield 'hello';
-  yield 'world';
-  return 'ending';
-}
-let hw = helloWorldGenerator();
-
-function symbol(name?: any): symbol {
-  return Symbol(name);
-}
+showScore(student);

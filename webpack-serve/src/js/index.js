@@ -1,1 +1,1 @@
-let key=1;
+let key = 1;
